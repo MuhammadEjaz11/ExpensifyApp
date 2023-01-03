@@ -59,7 +59,7 @@ const StartDate = (startDate) => ({
 const EndDate = (endDate)=>({
     type: "SET_END_DATE",
     endDate
-})
+});
 
 const expensesDefaultState = [];
 
