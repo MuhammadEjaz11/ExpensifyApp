@@ -2,7 +2,7 @@ console.log(__dirname)
 const path = require('path');
 
 module.exports = {
-    entry: './redux/hoc.js',
+    entry: './app.js',
     output: {
         path: __dirname,
         filename: "bundle.js"

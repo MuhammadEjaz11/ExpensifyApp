@@ -13,7 +13,8 @@ const store = configureStore();
 
 store.dispatch(Add_Expense({ description: 'water bill', note: 'water bill payment', amount: 1000, createAd: 500 }));
 store.dispatch(Add_Expense({ description: 'gas bill', note: 'gas bill payment', amount: 5000, createAd: 100 }));
-store.dispatch(EditTextFilter('bill'));
+store.dispatch(Add_Expense({ description: 'rent', note: 'rent', amount: 150000, createAd: 600 }));
+store.dispatch(EditTextFilter(''));
 const state = store.getState();
 const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 console.log(VisibleExpenses);
