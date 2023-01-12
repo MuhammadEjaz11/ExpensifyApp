@@ -1,11 +1,16 @@
 import React from "react";
 import moment from 'moment';
+import 'react-dates/initialize';
+import { SingleDatePicker } from "react-dates";
+import 'react-dates/lib/css/_datepicker.css';
 
 export default class EXpenseForm extends React.Component{
     state = {
         description:'',
         note: '',
-        amount:''
+        amount:'',
+        createdAt: moment(),
+        calenderFocused:false
     };
     descriptionChange = (e)=>{
         const description = e.target.value;
@@ -24,6 +29,12 @@ export default class EXpenseForm extends React.Component{
             this.setState({amount});
         }
     };
+    onDateChange = (createdAt)=>{
+        this.setState({createdAt})
+    };
+    onFocusChange = ({focused})=>{
+        this.setState(()=>({calenderFocused:focused}))
+    };
     render(){    
         return(
             <div>
@@ -35,6 +46,16 @@ export default class EXpenseForm extends React.Component{
                     value={this.state.description}
                     onChange={this.descriptionChange}
                     />
+                    
+                    <SingleDatePicker
+                    date={this.state.createdAt}
+                    onDateChange={this.onDateChange}
+                    focused={this.state.calenderFocused}
+                    onFocusChange={this.onFocusChange}
+                    numberOfMonths={1}
+                    
+
+                    />
                     <input
                     type='number' 
                     placeholder='Amount'
@@ -42,6 +63,7 @@ export default class EXpenseForm extends React.Component{
                     value={this.state.amount}
                     />
                     <br/>
+                
 
                     <textarea 
                     type='text' 
