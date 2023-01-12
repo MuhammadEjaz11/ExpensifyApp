@@ -1,5 +1,5 @@
 import React from "react";
-
+import moment from 'moment';
 
 export default class EXpenseForm extends React.Component{
     state = {
@@ -23,10 +23,8 @@ export default class EXpenseForm extends React.Component{
 
             this.setState({amount});
         }
-    }
-
-    render(){
-        
+    };
+    render(){    
         return(
             <div>
                 <form>
