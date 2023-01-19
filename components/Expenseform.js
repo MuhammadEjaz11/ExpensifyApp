@@ -4,73 +4,95 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from "react-dates";
 import 'react-dates/lib/css/_datepicker.css';
 
-export default class EXpenseForm extends React.Component{
+export default class EXpenseForm extends React.Component {
     state = {
-        description:'',
+        description: '',
         note: '',
-        amount:'',
+        amount: '',
         createdAt: moment(),
-        calenderFocused:false
+        calenderFocused: false,
+        error: ''
     };
-    descriptionChange = (e)=>{
+    descriptionChange = (e) => {
         const description = e.target.value;
-        this.setState({description});
-        
-    };
-    noteChange = (e)=>{
-        const note = e.target.value;
-        this.setState({note});
-        
-    };
-    amountChange = (e)=>{
-        const amount = e.target.value;
-        if (amount.match(/^\d*(\.\d{0,2})?$/)){
+        this.setState({ description });
 
-            this.setState({amount});
+    };
+    noteChange = (e) => {
+        const note = e.target.value;
+        this.setState({ note });
+
+    };
+    amountChange = (e) => {
+        const amount = e.target.value;
+        if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+
+            this.setState({ amount });
         }
     };
-    onDateChange = (createdAt)=>{
-        this.setState({createdAt})
+    onDateChange = (createdAt) => {
+        if (createdAt) {
+
+            this.setState({ createdAt })
+        }
     };
-    onFocusChange = ({focused})=>{
-        this.setState(()=>({calenderFocused:focused}))
+    onFocusChange = ({ focused }) => {
+        this.setState(() => ({ calenderFocused: focused }))
     };
-    render(){    
-        return(
+    OnSubmit = (e) => {
+        e.preventDefault();
+        if (!this.state.description || !this.state.amount) {
+            this.setState(() => ({ error: 'Please Provide Description and Amount' }))
+
+        } else {
+            this.setState(() => ({ error: '' }))
+            this.props.onSubmit({
+                description: this.state.description,
+                note: this.state.note,
+                amount: this.state.amount,
+                createdAt: this.state.createdAt,
+            })
+
+        }
+    };
+
+    render() {
+        return (
             <div>
-                <form>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.OnSubmit}>
                     <input
-                    type='text' 
-                    placeholder='Description'
-                    autoFocus
-                    value={this.state.description}
-                    onChange={this.descriptionChange}
+                        type='text'
+                        placeholder='Description'
+                        autoFocus
+                        value={this.state.description}
+                        onChange={this.descriptionChange}
                     />
-                    
+
+
+                    <input
+                        type='number'
+                        placeholder='Amount'
+                        onChange={this.amountChange}
+                        value={this.state.amount}
+                    />
+                    <br />
                     <SingleDatePicker
-                    date={this.state.createdAt}
-                    onDateChange={this.onDateChange}
-                    focused={this.state.calenderFocused}
-                    onFocusChange={this.onFocusChange}
-                    numberOfMonths={1}
-                    
+                        date={this.state.createdAt}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.calenderFocused}
+                        onFocusChange={this.onFocusChange}
+                        numberOfMonths={1}
+                    />
+                    <br />
 
+                    <textarea
+                        type='text'
+                        placeholder='Add your Note (Optional)'
+                        value={this.state.note}
+                        onChange={this.noteChange}
                     />
-                    <input
-                    type='number' 
-                    placeholder='Amount'
-                    onChange={this.amountChange}
-                    value={this.state.amount}
-                    />
-                    <br/>
-                
-
-                    <textarea 
-                    type='text' 
-                    placeholder='Add your Note (Optional)'
-                    value={this.state.note}
-                    onChange={this.noteChange}
-                    />
+                    <input type='submit' />
                 </form>
             </div>
         )

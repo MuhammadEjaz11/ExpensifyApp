@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+import { Add_Expense } from '../Actions/expense';
 import EXpenseForm from './Expenseform';
 
-const AddExpense = ()=> (
+const AddExpense = (props)=> (
     <div> 
         This is Add Expense component
-        <EXpenseForm/>
+        <EXpenseForm onSubmit={(expense)=>{
+            props.dispatch(Add_Expense(expense))
+        }}/>
     </div>
 );
 
-export default AddExpense;
+export default connect() (AddExpense);

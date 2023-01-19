@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 import ExpenseList from './ExpenseList';
 import ExpenseListFilter from './ExpenseListFilter';
+import { Add_Expense } from '../Actions/expense';
 
 const ExpenseDashboard = ()=> (
     <div>
