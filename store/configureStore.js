@@ -7,11 +7,12 @@ export default () => {
         combineReducers(
             {
                 expenses: expenseReducer,
-                filters: filterReducer
-    
-            }
-        )
-    );
+                filters: filterReducer,
+                
+            },
+            ),
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+            );
 
     return store;
 

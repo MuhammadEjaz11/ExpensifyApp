@@ -6,9 +6,10 @@ import EXpenseForm from './Expenseform';
 
 const AddExpense = (props)=> (
     <div> 
+        
         This is Add Expense component
         <EXpenseForm onSubmit={(expense)=>{
-            props.dispatch(Add_Expense(expense))
+            props.dispatch(Add_Expense(expense));
         }}/>
     </div>
 );
