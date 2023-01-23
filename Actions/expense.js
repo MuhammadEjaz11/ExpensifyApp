@@ -4,7 +4,7 @@ export const Add_Expense = (
         description = '',
         note = '',
         amount = 0,
-        createAd = 0
+        createDate = 0
     }={}
     )=>({
     type: "ADD_EXPENSE",
@@ -13,7 +13,7 @@ export const Add_Expense = (
         description,
         note,
         amount,
-        createAd
+        createDate
     }
 });
 

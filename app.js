@@ -11,9 +11,9 @@ import AppRoute from './Routes/AppRoute';
 const store = configureStore();
 
 
-store.dispatch(Add_Expense({ description: 'water bill', note: 'water bill payment', amount: 1000, createAd: 5000 }));
-store.dispatch(Add_Expense({ description: 'gas bill', note: 'gas bill payment', amount: 5000, createAd: 1000 }));
-store.dispatch(Add_Expense({ description: 'rent', note: 'rent', amount: 150000, createAd: 6000 }));
+store.dispatch(Add_Expense({ description: 'water bill', note: 'water bill payment', amount: 1000, createDate: 5000 }));
+store.dispatch(Add_Expense({ description: 'gas bill', note: 'gas bill payment', amount: 5000, createDate: 1000 }));
+store.dispatch(Add_Expense({ description: 'rent', note: 'rent', amount: 150000, createDate: 6000 }));
 store.dispatch(EditTextFilter(''));
 const state = store.getState();
 const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);

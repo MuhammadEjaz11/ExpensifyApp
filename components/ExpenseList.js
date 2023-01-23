@@ -4,11 +4,12 @@ import ExpenseListItem from './ExpenseListItem';
 import {getVisibleExpenses} from '../selectors/expense'
 
 const ExpenseList = (props)=> (
+    
     <div> 
        <h1>Expense List</h1>
        <div>{props.expenses.map((item)=>{
         return (
-            <ExpenseListItem key={item.id} {...item}/>
+            <ExpenseListItem key={item.id} props={item}/>
         )
        })}</div>
 

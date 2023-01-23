@@ -9,7 +9,7 @@ export default class EXpenseForm extends React.Component {
         description: '',
         note: '',
         amount: '',
-        createdAt: moment(),
+        createDate: moment(),
         calenderFocused: false,
         error: ''
     };
@@ -30,10 +30,10 @@ export default class EXpenseForm extends React.Component {
             this.setState({ amount });
         }
     };
-    onDateChange = (createdAt) => {
-        if (createdAt) {
+    onDateChange = (createDate) => {
+        if (createDate) {
 
-            this.setState({ createdAt })
+            this.setState({ createDate })
         }
     };
     onFocusChange = ({ focused }) => {
@@ -50,7 +50,7 @@ export default class EXpenseForm extends React.Component {
                 description: this.state.description,
                 note: this.state.note,
                 amount: this.state.amount,
-                createdAt: this.state.createdAt,
+                createDate: this.state.createDate,
             })
 
         }
@@ -78,7 +78,7 @@ export default class EXpenseForm extends React.Component {
                     />
                     <br />
                     <SingleDatePicker
-                        date={this.state.createdAt}
+                        date={this.state.createDate}
                         onDateChange={this.onDateChange}
                         focused={this.state.calenderFocused}
                         onFocusChange={this.onFocusChange}
