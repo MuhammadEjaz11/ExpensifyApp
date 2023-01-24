@@ -6,6 +6,7 @@ import { Remove_Expense } from '../Actions/expense'
 
 const ExpenseListItem = (item) => {
   const { dispatch, props } = item
+  console.log(props)
   const { id } = props
   let dateformate = moment(props.createDate._d).format("YYYY-MM-DD")
   

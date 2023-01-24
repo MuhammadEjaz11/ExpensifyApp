@@ -52,6 +52,7 @@ export default class EXpenseForm extends React.Component {
                 amount: this.state.amount,
                 createDate: this.state.createDate,
             })
+            {alert('Expense Added Succesfull')}
 
         }
     };
