@@ -8,6 +8,8 @@ import { getVisibleExpenses } from './selectors/expense';
 import './Style/style.scss';
 import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
 import AppRoute from './Routes/AppRoute';
+import './Firebase/firebase'
+
 const store = configureStore();
 
 
