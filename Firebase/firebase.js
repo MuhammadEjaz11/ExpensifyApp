@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const firebaseConfig = {
@@ -14,8 +15,48 @@ const firebaseConfig = {
 
   export const app = initializeApp(firebaseConfig);
   export const database = getDatabase(app);
+  // const note = [
+  //   {
+  //     name:'ejaz',
+  //     company:'reliable',
+  //     email:'test@gmail.com'
+  //   },
+  //    {
+  //     name:'ahmed',
+  //     company:'punching',
+  //     email:'ahmed@gmail.com'
+  //   }
+  // ]
 
-  set(ref(database),{
-    name:'asd',
-    age:23
-  })
+
+  // set(ref(database,`user/${uuidv4()}`),{
+  //     name:'ahmed',
+  //     company:'punching',
+  //     email:'ahmed@gmail.com'
+  //   }
+  //   );
+
+  //   set(ref(database,`user/${uuidv4()}`),{
+  //     name:'aa',
+  //     company:'aa',
+  //     email:'aa@gmail.com'
+  //   }
+  //   );
+
+  //   set(ref(database,`user/${uuidv4()}`),{
+  //     name:'bb',
+  //     company:'bb',
+  //     email:'bbb@gmail.com'
+  //   }
+  //   );
+
+    onValue(ref(database,'user'),(snapshot)=>{
+      const expenses = [];
+      snapshot.forEach((childsnapshot)=>{
+        expenses.push({
+          id: childsnapshot.key,
+          ...childsnapshot.val()
+        })
+      });
+      console.log(expenses)
+    })
