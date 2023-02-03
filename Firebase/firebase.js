@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, remove, set, update,get,child,onValue } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -15,7 +15,23 @@ const firebaseConfig = {
   export const app = initializeApp(firebaseConfig);
   export const database = getDatabase(app);
 
-  set(ref(database),{
-    name:'asd',
-    age:23
-  })
+  // set(ref(database, 'user1'),{
+  //   name:'asd',
+  //   age:25,
+  //   email:'test@gmail.com',
+  //   location:{
+  //     city:'karachi',
+  //     country:'Pakistan'
+  //   }
+  // });
+  // update(ref(database, 'user1'),{
+  //   name:'ejaz'
+  // });
+  // remove(ref(database, 'user1'));
+  // get(ref(database),'user1').then((data)=>{
+  //   console.log(data.val())
+  // });
+  // onValue(ref(database,'user1'),(post)=>{
+  //   console.log(post.val())
+  // })
+ 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-import { Add_Expense } from '../Actions/expense';
+import { startAddExpense } from '../Actions/expense';
 import EXpenseForm from './Expenseform';
 
 const AddExpense = (props)=> (
@@ -9,7 +9,7 @@ const AddExpense = (props)=> (
         
         This is Add Expense component
         <EXpenseForm onSubmit={(expense)=>{
-            props.dispatch(Add_Expense(expense));
+            props.dispatch(startAddExpense(expense));
         }}/>
     </div>
 );
