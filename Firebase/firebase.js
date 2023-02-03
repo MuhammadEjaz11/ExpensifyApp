@@ -1,10 +1,7 @@
 import { initializeApp } from "firebase/app";
-<<<<<<< HEAD
 import { getDatabase, ref, remove, set, update,get,child,onValue } from "firebase/database";
-=======
-import { getDatabase, onValue, ref, set } from "firebase/database";
 import { v4 as uuidv4 } from 'uuid';
->>>>>>> 0450c72b4908640a1ab12fb1c34b95aa41cb6a41
+
 
 
 const firebaseConfig = {
@@ -32,7 +29,7 @@ const firebaseConfig = {
   //   }
   // ]
 
-<<<<<<< HEAD
+
   // set(ref(database, 'user1'),{
   //   name:'asd',
   //   age:25,
@@ -53,7 +50,7 @@ const firebaseConfig = {
   //   console.log(post.val())
   // })
  
-=======
+
 
   // set(ref(database,`user/${uuidv4()}`),{
   //     name:'ahmed',
@@ -76,14 +73,14 @@ const firebaseConfig = {
   //   }
   //   );
 
-    onValue(ref(database,'user'),(snapshot)=>{
-      const expenses = [];
-      snapshot.forEach((childsnapshot)=>{
-        expenses.push({
-          id: childsnapshot.key,
-          ...childsnapshot.val()
-        })
-      });
-      console.log(expenses)
-    })
->>>>>>> 0450c72b4908640a1ab12fb1c34b95aa41cb6a41
+    // onValue(ref(database,'user'),(snapshot)=>{
+    //   const expenses = [];
+    //   snapshot.forEach((childsnapshot)=>{
+    //     expenses.push({
+    //       id: childsnapshot.key,
+    //       ...childsnapshot.val()
+    //     })
+    //   });
+    //   console.log(expenses)
+    // })
+
