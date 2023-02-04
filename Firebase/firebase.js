@@ -28,17 +28,13 @@ const firebaseConfig = {
   //     email:'ahmed@gmail.com'
   //   }
   // ]
+  // const id = uuidv4();
 
-
-  // set(ref(database, 'user1'),{
-  //   name:'asd',
-  //   age:25,
-  //   email:'test@gmail.com',
-  //   location:{
-  //     city:'karachi',
-  //     country:'Pakistan'
-  //   }
-  // });
+  // set(ref(database, 'expense/' + id),{ 
+  //   description: 'water bill', 
+  //   note: 'water bill payment', 
+  //   amount: 1000, 
+  //   createDate: 5000 });
   // update(ref(database, 'user1'),{
   //   name:'ejaz'
   // });
@@ -73,7 +69,7 @@ const firebaseConfig = {
   //   }
   //   );
 
-    // onValue(ref(database,'user'),(snapshot)=>{
+    // onValue(ref(database,'expense'),(snapshot)=>{
     //   const expenses = [];
     //   snapshot.forEach((childsnapshot)=>{
     //     expenses.push({

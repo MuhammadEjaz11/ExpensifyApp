@@ -20,6 +20,10 @@ export default (state = expensesDefaultState, action) => {
                     return expense
                 }
             })
+        // case "SET_EXPENSE" : 
+        //     return (
+        //         [...state, action.expense]
+        //     )
         default:
             return state;
     }
