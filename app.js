@@ -8,7 +8,9 @@ import { getVisibleExpenses } from './selectors/expense';
 import './Style/style.scss';
 import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
 import AppRoute from './Routes/AppRoute';
-import './Firebase/firebase'
+import './Firebase/firebase';
+import { GoogleAuthProvider, getAuth, signInWithPopup,onAuthStateChanged } from "firebase/auth";
+
 
 export const store = configureStore();
 
@@ -31,7 +33,14 @@ const Test = (
         </Provider>
     </div>
 );
+getAuth().onAuthStateChanged((user)=>{
+    if(user){
+        console.log('Login')
+    }else{
 
+        console.log('Logout')
+    }
+})
 
 store.dispatch(StartSetExpense());
 ReactDOM.render(Test, document.getElementById("app"));
