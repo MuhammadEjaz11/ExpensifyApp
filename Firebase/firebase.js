@@ -80,3 +80,4 @@ const firebaseConfig = {
     //   console.log(expenses)
     // })
 
+    ;
