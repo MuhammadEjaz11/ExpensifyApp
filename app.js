@@ -7,9 +7,10 @@ import { EditTextFilter, sortByAmount, sortByDate, StartDate, EndDate } from './
 import { getVisibleExpenses } from './selectors/expense';
 import './Style/style.scss';
 import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
-import AppRoute from './Routes/AppRoute';
+import AppRoute, { history } from './Routes/AppRoute';
 import './Firebase/firebase';
-import { GoogleAuthProvider, getAuth, signInWithPopup,onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { async } from '@firebase/util';
 
 
 export const store = configureStore();
@@ -33,17 +34,33 @@ const Test = (
         </Provider>
     </div>
 );
-getAuth().onAuthStateChanged((user)=>{
-    if(user){
-        console.log('Login')
-    }else{
-
-        console.log('Logout')
+let HasRendered = false;
+const renderApp = () => {
+    if (!HasRendered) {
+        ReactDOM.render(Test, document.getElementById("app"));
     }
-})
+};
 
-store.dispatch(StartSetExpense());
-ReactDOM.render(Test, document.getElementById("app"));
+getAuth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log('Login');
+        renderApp();
+        store.dispatch(StartSetExpense())
+        if(history.location.pathname === '/'){
+            history.push('/dashboard')
+        }
+
+
+
+    } else {
+        renderApp()
+        history.push('/')
+        console.log('logout')
+    }
+});
+
+// store.dispatch(StartSetExpense());
+ReactDOM.render(<p>Loading</p>, document.getElementById("app"));
 
 
 
