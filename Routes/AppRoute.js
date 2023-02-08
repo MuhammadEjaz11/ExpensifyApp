@@ -12,7 +12,7 @@ import Login from '../components/Login';
 
 export const history = createBrowserHistory();
 
-const AppRoute = (
+const AppRoute = ()=>{ return(
     <Router history={history}>
         <div>
             {/* <Login/> */}
@@ -31,6 +31,7 @@ const AppRoute = (
 
     </Router>
 );
+}
 
 
 

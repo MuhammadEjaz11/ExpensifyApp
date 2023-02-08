@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
@@ -6,7 +6,7 @@ import { Add_Expense, Remove_Expense, Edit_Expense, StartSetExpense, Set_Expense
 import { EditTextFilter, sortByAmount, sortByDate, StartDate, EndDate } from './Actions/filters';
 import { getVisibleExpenses } from './selectors/expense';
 import './Style/style.scss';
-import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, NavLink, useNavigate } from 'react-router-dom';
 import AppRoute, { history } from './Routes/AppRoute';
 import './Firebase/firebase';
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged } from "firebase/auth";
@@ -25,42 +25,41 @@ export const store = configureStore();
 const state = store.getState();
 const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
-const Test = (
+const Test = () => {
+    // const navigate = useNavigate()
+    // useEffect(() => {
+    //     getAuth().onAuthStateChanged((user) => {
+    //         if (user) {
+    //             console.log('Login');
+    //             navigate("/dashboard")
+    //             // history.push('/dashboard')
+    //             // window.location.href = "/dashboard"
+    //         } else {
+    //             history.push('/')
+    //             navigate("/")
 
-    <div>
-        <Provider store={store}>
+    //             console.log('logout')
+    //         }
+    //     });
 
-            {AppRoute}
-        </Provider>
-    </div>
-);
-let HasRendered = false;
-const renderApp = () => {
-    if (!HasRendered) {
-        ReactDOM.render(Test, document.getElementById("app"));
-    }
-};
+    // }, [])
+    return (
+        <div>
 
-getAuth().onAuthStateChanged((user) => {
-    if (user) {
-        console.log('Login');
-        renderApp();
-        store.dispatch(StartSetExpense())
-        if(history.location.pathname === '/'){
-            history.push('/dashboard')
-        }
+                <Provider store={store}>
+
+                    {<AppRoute/>}
+                </Provider>
+            
+        </div >
+    )
+}
 
 
 
-    } else {
-        renderApp()
-        history.push('/')
-        console.log('logout')
-    }
-});
-
+store.dispatch(StartSetExpense())
 // store.dispatch(StartSetExpense());
-ReactDOM.render(<p>Loading</p>, document.getElementById("app"));
+ReactDOM.render(<Test />, document.getElementById("app"));
 
 
 
