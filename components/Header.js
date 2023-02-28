@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes, Link, NavLink, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { StartLogOut } from '../Actions/auth';
+import { StartLogOut, Login, Logout } from '../Actions/auth';
 import { getAuth } from '@firebase/auth';
 
 const Header = (props) => {
@@ -10,13 +10,15 @@ const Header = (props) => {
     useEffect(() => {
         getAuth().onAuthStateChanged((user) => {
             if (user) {
-
+                
+                console.log(user.uid)
+                console.log(props.Login(user.uid))
                 navigate("/dashboard")
 
             } else {
 
                 navigate("/")
-
+                props.Logout()
                 console.log('logout')
             }
         });
@@ -36,7 +38,9 @@ const Header = (props) => {
 }
 
 const mapDispatchtoProps = (dispatch) => ({
-    StartLogOut: () => (dispatch(StartLogOut()))
+    StartLogOut: () => (dispatch(StartLogOut())),
+    Login: (uid)=> (dispatch(Login(uid))),
+    Logout: ()=> (dispatch(Logout())),
 })
 
 export default connect(undefined, mapDispatchtoProps)(Header);

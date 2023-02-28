@@ -26,23 +26,7 @@ const state = store.getState();
 const VisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
 const Test = () => {
-    // const navigate = useNavigate()
-    // useEffect(() => {
-    //     getAuth().onAuthStateChanged((user) => {
-    //         if (user) {
-    //             console.log('Login');
-    //             navigate("/dashboard")
-    //             // history.push('/dashboard')
-    //             // window.location.href = "/dashboard"
-    //         } else {
-    //             history.push('/')
-    //             navigate("/")
-
-    //             console.log('logout')
-    //         }
-    //     });
-
-    // }, [])
+    
     return (
         <div>
 
@@ -57,8 +41,7 @@ const Test = () => {
 
 
 
-store.dispatch(StartSetExpense())
-// store.dispatch(StartSetExpense());
+store.dispatch(StartSetExpense());
 ReactDOM.render(<Test />, document.getElementById("app"));
 
 
