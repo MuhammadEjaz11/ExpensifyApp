@@ -18,7 +18,7 @@ const AppRoute = (props)=>{ return(
     <Router history={history}>
         <div>
             {/* <Login/> */}
-            <Header/>
+            {props.isAuthenticated? <Header/>: null}
         </div>
         <Routes>
         <Route exact={true} path='/' element={<Login/>}/>
