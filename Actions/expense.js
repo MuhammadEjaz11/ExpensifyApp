@@ -27,8 +27,9 @@ export const startAddExpense = (expenseData = {}) => {
             amount,
             createDate: moment(createDate._d).format("YYYY-MM-DD"),
         }
+        let userId = localStorage.getItem('userid')
 
-        set(ref(database, 'expense/' + expense.id), expense)
+        set(ref(database, `users/${userId}/` + expense.id), expense)
         // .then(() => {
         //     dispatch(Add_Expense({
         //         ...expense
@@ -48,7 +49,9 @@ export const Remove_Expense = ({ id } = {}) => ({
 
 export const StartRemoveExpense = ({id}={})=>{
     return  (dispatch)=>{
-        remove(ref(database, `expense/${id}`)).then(()=>{
+        console.log(id)
+        let userId = localStorage.getItem('userid')
+        remove(ref(database, `users/${userId}/${id}`)).then(()=>{
             dispatch(Remove_Expense({id}))
         })
     }
@@ -75,7 +78,8 @@ export const Set_Expense = (expense) => ({
 
 export const StartSetExpense = () => {
     return (dispatch) => {
-        return onValue(ref(database, 'expense/'), (snapshot) => {
+        let userId = localStorage.getItem('userid')
+        return onValue(ref(database, `users/${userId}/`), (snapshot) => {
             let expense = [];
             snapshot.forEach((childSnapshot) => {
                 expense.push({

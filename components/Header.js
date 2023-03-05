@@ -10,6 +10,7 @@ const Header = (props) => {
     useEffect(() => {
         getAuth().onAuthStateChanged((user) => {
             if (user) {
+                localStorage.setItem("userid", user.uid)
                 
                 console.log(user.uid)
                 console.log(props.Login(user.uid))
@@ -25,15 +26,7 @@ const Header = (props) => {
 
     }, [])
     return (
-
-        <div>
-            <h1>Header</h1> <br />
-            <NavLink to='/dashboard' activeclassname='active' >Go to Dashboard </NavLink> <br />
-            <NavLink to='/add'>Go to AddExpense </NavLink> <br />
-            <NavLink to='/edit'>Go to EditExpense </NavLink> <br />
-            <NavLink to='/help'>Go to Help </NavLink> <br />
-            <button onClick={props.StartLogOut}>Logout</button>
-        </div>
+<></>
     );
 }
 
