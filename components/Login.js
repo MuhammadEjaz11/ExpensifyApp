@@ -11,7 +11,7 @@ const Login = ({ StartLogin }) => (
         <div className="main-box">
             <h1 className="main-box__title">Expensify App</h1>
             <p className="main-box__sub-title">It's time to get your expenses undercontrol</p>
-            <button onClick={StartLogin}>Login</button>
+            <button className="button" onClick={StartLogin}>Login With Google</button>
         </div>
 
     </div>
