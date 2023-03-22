@@ -1,0 +1,24 @@
+.box-layout{
+    background-image: url('/images/bg.jpg');
+    background-size: cover;
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-box{
+    border-radius: 3px;
+    background-color: rgb(244, 243, 243, 0.8);
+    width: 25rem;
+    text-align: center;
+    padding: 10px;
+}
+.main-box__title{
+    color: rgb(74, 74, 74);
+    font-size: 2.5rem;
+}
+.main-box__sub-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
