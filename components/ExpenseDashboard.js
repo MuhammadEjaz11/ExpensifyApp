@@ -7,7 +7,7 @@ import { Add_Expense } from '../Actions/expense';
 
 const ExpenseDashboard = ()=> (
     <div>
-        This is Expense Dashboard component
+        <div className='heading-section'><h1>Dashboard</h1></div>
         <ExpenseListFilter/>
         <ExpenseList/>
         

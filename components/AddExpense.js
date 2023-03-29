@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import { startAddExpense } from '../Actions/expense';
 import EXpenseForm from './Expenseform';
 
-const AddExpense = (props)=> (
-    <div> 
+const AddExpense = (props) => (
+    <div>
 
-        This is Add Expense component
-        <EXpenseForm onSubmit={(expense)=>{
-            props.dispatch(startAddExpense(expense));
-        }}/>
+        <div className='heading-section'><h1>Add Expense</h1></div>
+        <div className='form-container'>
+            <EXpenseForm onSubmit={(expense) => {
+                props.dispatch(startAddExpense(expense));
+            }} />
+        </div>
     </div>
 );
 

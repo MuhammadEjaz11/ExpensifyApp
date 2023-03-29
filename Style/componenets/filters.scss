@@ -1,0 +1,31 @@
+.input-group{
+    // border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+.input-group-item{
+ margin: 1rem;
+}
+.search-input{
+    padding: 14px;
+    border: 1px solid rgb(175, 175, 175);
+    font-size: 1.5rem;
+}
+.select-item{
+    font-size: 1.5rem;
+    padding: 14px;
+    border: 1px solid rgb(175, 175, 175);
+    appearance: none;
+}
+.search-input:focus{
+    outline: none;
+}
+.form-container{
+    margin: 10px auto;
+    // border: 1px solid black;
+    width: 70%;
+    
+}

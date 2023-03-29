@@ -52,14 +52,15 @@ export default class EXpenseForm extends React.Component {
                 amount: this.state.amount,
                 createDate: this.state.createDate,
             })
-            {alert('Expense Added Succesfull')}
+            { alert('Expense Added Succesfull') }
 
         }
     };
 
     render() {
         return (
-            <div>
+            <div className='form-section'>
+
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.OnSubmit}>
                     <input
@@ -68,6 +69,7 @@ export default class EXpenseForm extends React.Component {
                         autoFocus
                         value={this.state.description}
                         onChange={this.descriptionChange}
+                        className='search-input'
                     />
 
 
@@ -76,15 +78,19 @@ export default class EXpenseForm extends React.Component {
                         placeholder='Amount'
                         onChange={this.amountChange}
                         value={this.state.amount}
+                        className='search-input'
                     />
                     <br />
-                    <SingleDatePicker
-                        date={this.state.createDate}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calenderFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
-                    />
+                    <div className='date-picker'>
+                        <SingleDatePicker
+                            date={this.state.createDate}
+                            onDateChange={this.onDateChange}
+                            focused={this.state.calenderFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+
+                        />
+                    </div>
                     <br />
 
                     <textarea
@@ -92,8 +98,13 @@ export default class EXpenseForm extends React.Component {
                         placeholder='Add your Note (Optional)'
                         value={this.state.note}
                         onChange={this.noteChange}
+                        className='search-input'
                     />
-                    <input type='submit' />
+                    <div>
+
+
+                    <input className='button' type='submit' />
+                    </div>
                 </form>
             </div>
         )

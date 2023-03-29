@@ -1,0 +1,19 @@
+.form-section{
+    form{
+        display: flex;
+        flex-direction: column;
+        *{
+            margin-bottom: 10px;
+        }
+
+    }
+
+}
+.date-picker{
+    border: 1px solid rgb(175, 175, 175);
+    width: 200px;
+    height: 66px;
+}
+.SingleDatePickerInput__withBorder{
+    border: none !important;
+}
