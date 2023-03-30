@@ -8,17 +8,29 @@ const ExpenseListItem = (item) => {
   const { dispatch, props } = item
   const { id } = props
   let dateformate = moment(props.createDate._d).format("YYYY-MM-DD")
-  
+
   return (
 
 
-    <div>
+    <div className='item-container'>
+      <div>
 
-      <h1>{props.description} </h1>
-      <p>Amount:{props.amount} </p>
-      <p>Create At:{dateformate} </p>
-      <button onClick={() => (dispatch(StartRemoveExpense({ id })))}>Remove</button>
+        <div className='first-item' >
+          <h1 className='description'>{props.description} </h1>
+          <p className='date'>Date:{dateformate} </p>
 
+        </div>
+
+
+        <div className='second-item'>
+          <p className='date'>Rs. {props.amount}.00 /=</p>
+          <div className='remove-container'>
+
+            <button className='button remove-button' onClick={() => (dispatch(StartRemoveExpense({ id })))}>Remove</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   )
