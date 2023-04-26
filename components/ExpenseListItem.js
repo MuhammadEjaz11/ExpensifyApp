@@ -13,7 +13,7 @@ const ExpenseListItem = (item) => {
 
 
     <div className='item-container'>
-      <div>
+      
 
         <div className='first-item' >
           <h1 className='description'>{props.description} </h1>
@@ -30,7 +30,7 @@ const ExpenseListItem = (item) => {
           </div>
         </div>
 
-      </div>
+      
     </div>
 
   )
